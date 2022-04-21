@@ -116,7 +116,7 @@ class DerivativeImagesJob extends Omeka_Job_AbstractJob
             // temporary ones made during image creation above.
             foreach ($this->_derivatives as $type => $constraint) {
                 $this->_storage->delete($file->getStoragePath($type));
-                $source = FILES_DIR . "/original/{$type}_" . $file->getDerivativeFilename();
+                $source = FILES_DIR . '/' . dirname($file->getStoragePath('original')) . "/{$type}_" . $file->getDerivativeFilename();
                 $this->_storage->store($source, $file->getStoragePath($type));
             }
             
